@@ -1,8 +1,14 @@
 :root {
-  --text-default: #201F1F;
+  --text-default: #201f1f;
   --text-default-inverse: #ffffff;
-  --purple: #6A3AA2;
-  --purple-gradient: linear-gradient(165.54deg, #141333 -33.39%, #202261 15.89%, #543C97 55.84%, #6939A2 74.96%);
+  --purple: #6a3aa2;
+  --purple-gradient: linear-gradient(
+    165.54deg,
+    #141333 -33.39%,
+    #202261 15.89%,
+    #543c97 55.84%,
+    #6939a2 74.96%
+  );
 }
 
 html,
