@@ -5,11 +5,12 @@ export default function parseNextScreenConditions(
   answers: Record<string, string>
 ): string | undefined {
   let result = undefined;
-  conditions.forEach(condition => {
+  conditions.some(condition => {
     const [expression, nextScreenSlug] = condition;
     const expressionResult = evaluateCondition(expression, answers);
     if (expressionResult) {
-      return (result = nextScreenSlug);
+      result = nextScreenSlug;
+      return true;
     }
   });
   return result;

@@ -6,6 +6,10 @@ export default function evaluateCondition(
 ): boolean {
   const parser = new Parser();
 
+  if (expression === 'fallback') {
+    return true;
+  }
+
   try {
     const expr = parser.parse(expression);
     const result = expr.evaluate(answers);
