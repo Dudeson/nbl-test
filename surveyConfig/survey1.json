@@ -1,0 +1,337 @@
+{
+  "id": "survey1",
+  "title": "Survey 1 title",
+  "startScreen": "gender",
+  "screens": [
+    {
+      "slug": "gender",
+      "screenType": "question",
+      "title": "Select your gender:",
+      "options": [
+        {
+          "value": "male",
+          "label": "Male"
+        },
+        {
+          "value": "female",
+          "label": "Female"
+        }
+      ],
+      "nextScreen": "in_relationship"
+    },
+    {
+      "slug": "in_relationship",
+      "screenType": "question",
+      "title": "So we can get to know you better, tell us about your relationship status.",
+      "options": [
+        {
+          "value": "false",
+          "label": "Single"
+        },
+        {
+          "value": "true",
+          "label": "In a relationship"
+        }
+      ],
+      "nextScreen": "has_children"
+    },
+    {
+      "slug": "has_children",
+      "screenType": "question",
+      "title": "Are you a{#if in_relationship == false} single{/if} parent?",
+      "options": [
+        {
+          "value": "true",
+          "label": "Yes"
+        },
+        {
+          "value": "false",
+          "label": "No"
+        }
+      ],
+      "nextScreen": {
+        "conditions": [
+          ["in_relationship == true", "in_relationship_problem"],
+          ["in_relationship == false", "single_problem"]
+        ]
+      }
+    },
+    {
+      "slug": "in_relationship_problem",
+      "screenType": "question",
+      "title": "{gender} {#if has_children == true}who have children {/if} need a slightly different approach to improve their relationship. Which statement best describes you?",
+      "options": [
+        {
+          "value": "high",
+          "label": "I’m very unhappy with how things are going in my relationship"
+        },
+        {
+          "value": "medium",
+          "label": "I’m unhappy with parts of my relationship, but some things are working well"
+        },
+        {
+          "value": "low",
+          "label": "I’m generally happy in my relationship"
+        }
+      ],
+      "nextScreen": "overthinking"
+    },
+    {
+      "slug": "single_problem",
+      "screenType": "question",
+      "title": "Single {gender} {#if has_children == true}who have children {/if} need a slightly different approach to find their perfect partner. But first, how did you feel in your last relationship?",
+      "options": [
+        {
+          "value": "high",
+          "label": "I was unhappy with low things were going in my relationship"
+        },
+        {
+          "value": "medium",
+          "label": "I was unhappy with parts of my relationship, but some thing were working"
+        },
+        {
+          "value": "low",
+          "label": "I was generally happy with my relationship"
+        },
+        {
+          "value": "na",
+          "label": "I’ve never been in a relationship"
+        }
+      ],
+      "nextScreen": "partner_type"
+    },
+    {
+      "slug": "partner_type",
+      "screenType": "question",
+      "title": "Is your partner an introvert or extrovert?",
+      "options": [
+        {
+          "value": "introvert",
+          "label": "Introvert"
+        },
+        {
+          "value": "extrovert",
+          "label": "Extrovert"
+        },
+        {
+          "value": "both",
+          "label": "A bit of both"
+        }
+      ],
+      "nextScreen": "partner_gender"
+    },
+    {
+      "slug": "partner_gender",
+      "screenType": "question",
+      "title": "What is your partner’s gender?",
+      "options": [
+        {
+          "value": "male",
+          "label": "Male"
+        },
+        {
+          "value": "female",
+          "label": "Female"
+        }
+      ],
+      "nextScreen": "partner_priority"
+    },
+    {
+      "slug": "partner_priority",
+      "screenType": "question",
+      "title": "Do you agree with the statement below?",
+      "subtitle": "“My partner and I make sex a priority in our relationship”",
+      "options": [
+        {
+          "value": "strongly_agree",
+          "label": "Strongly agree"
+        },
+        {
+          "value": "agree",
+          "label": "Agree"
+        },
+        {
+          "value": "neutral",
+          "label": "Neutral"
+        },
+        {
+          "value": "disagree",
+          "label": "Disagee"
+        },
+        {
+          "value": "strongly_disagree",
+          "label": "Strongly disagree"
+        }
+      ],
+      "nextScreen": "relationship_goals"
+    },
+    {
+      "slug": "relationship_goals",
+      "screenType": "question",
+      "title": "Do you agree with the statement below?",
+      "options": [
+        {
+          "value": "optimistic",
+          "label": "Optimistic! They are totally doable, with some guidance."
+        },
+        {
+          "value": "cautious",
+          "label": "Cautious. I’ve struggled before, but I’m hopeful."
+        },
+        {
+          "value": "anxious",
+          "label": "I’m feeling a little anxious, honestly."
+        }
+      ],
+      "nextScreen": "lead_source"
+    },
+    {
+      "slug": "overthinking",
+      "screenType": "question",
+      "title": "Do you tend to overthink?",
+      "options": [
+        {
+          "value": "false",
+          "label": "No"
+        },
+        {
+          "value": "true",
+          "label": "Yes"
+        }
+      ],
+      "nextScreen": "how_it_works"
+    },
+    {
+      "slug": "how_it_works",
+      "screenType": "info",
+      "title": "So how does it work?",
+      "description": "We analyze hundreds of data points to create your unique astrological blueprint. This is combined with AI to tailor-make your astrological insights, based on your answers. We’re going to change your relationship with astrology.",
+      "action": "Next",
+      "nextScreen": {
+        "conditions": [
+          ["overthinking == true", "most_important"],
+          ["overthinking == false", "emotional_control"]
+        ]
+      }
+    },
+    {
+      "slug": "most_important",
+      "screenType": "question",
+      "title": "What is most important to you?",
+      "options": [
+        {
+          "value": "success",
+          "label": "Success"
+        },
+        {
+          "value": "romance",
+          "label": "Romance"
+        },
+        {
+          "value": "stability",
+          "label": "Stability"
+        },
+        {
+          "value": "freedom",
+          "label": "Freedom"
+        }
+      ],
+      "nextScreen": "lead_source"
+    },
+    {
+      "slug": "emotional_control",
+      "screenType": "question",
+      "title": "Is emotional control tricky for you?",
+      "options": [
+        {
+          "value": "yes",
+          "label": "Yes"
+        },
+        {
+          "value": "sometimes",
+          "label": "Sometimes"
+        },
+        {
+          "value": "rarely",
+          "label": "Rarely"
+        },
+        {
+          "value": "no",
+          "label": "Not at all"
+        }
+      ],
+      "nextScreen": "lead_source"
+    },
+    {
+      "slug": "lead_source",
+      "screenType": "question",
+      "title": "Where did you hear about us?",
+      "options": [
+        {
+          "value": "poster_or_billboard",
+          "label": "Poster or Billboard"
+        },
+        {
+          "value": "friend_or_family",
+          "label": "Friend or Family"
+        },
+        {
+          "value": "instagram",
+          "label": "Instagram"
+        },
+        {
+          "value": "mail_or_package_insert",
+          "label": "Direct Mail or Package Insert"
+        },
+        {
+          "value": "online_tv",
+          "label": "Online TV or Streaming TV"
+        },
+        {
+          "value": "tv",
+          "label": "TV"
+        },
+        {
+          "value": "radio",
+          "label": "Radio"
+        },
+        {
+          "value": "search_engine",
+          "label": "Search Engine (Google, Bing, etc.)"
+        },
+        {
+          "value": "newspaper_or_magazine",
+          "label": "Newspaper or Magazine"
+        },
+        {
+          "value": "facebook",
+          "label": "Facebook"
+        },
+        {
+          "value": "post_or_review",
+          "label": "Blog Post or Website Review"
+        },
+        {
+          "value": "podcast",
+          "label": "Podcast"
+        },
+        {
+          "value": "influencer",
+          "label": "Influencer"
+        },
+        {
+          "value": "youtube",
+          "label": "Youtube"
+        },
+        {
+          "value": "pinterest",
+          "label": "Pinterest"
+        },
+        {
+          "value": "other",
+          "label": "Other"
+        }
+      ]
+    }
+  ]
+}
