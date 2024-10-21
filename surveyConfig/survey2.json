@@ -51,7 +51,10 @@
       ],
       "nextScreen": {
         "conditions": [
-          ["gender == 'male' and (in_relationship == 'false' or has_children != 'true')", "male_info"],
+          [
+            "gender == 'male' and (in_relationship == 'false' or has_children != 'true')",
+            "male_info"
+          ],
           ["gender == 'female' and has_children == 'true'", "female_info"]
         ]
       }
