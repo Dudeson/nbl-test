@@ -32,11 +32,11 @@ export default function SurveyScreen({
 
   const isInfoScreen = screenType === 'info';
 
-  const navigateToNextScreen = () => {
+  const navigateToNextScreen = (updatedAnswers?: Record<string, string>) => {
     let nextScreenSlug: string | undefined;
 
     if (nextScreen) {
-      nextScreenSlug = getNextScreen(nextScreen, answers);
+      nextScreenSlug = getNextScreen(nextScreen, updatedAnswers ?? answers);
     }
 
     navigate.push(`/survey/${nextScreenSlug || 'results'}`);
@@ -44,7 +44,10 @@ export default function SurveyScreen({
 
   const handleOption = (answer: string) => {
     dispatch(saveAnswer({ screenSlug: slug, answer }));
-    navigateToNextScreen();
+    navigateToNextScreen({
+      ...answers,
+      [slug]: answer,
+    });
   };
 
   return (
@@ -70,7 +73,7 @@ export default function SurveyScreen({
           {action && (
             <button
               className={styles.actionButton}
-              onClick={navigateToNextScreen}
+              onClick={() => navigateToNextScreen()}
             >
               {action}
             </button>

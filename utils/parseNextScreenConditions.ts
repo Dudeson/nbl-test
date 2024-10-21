@@ -1,4 +1,4 @@
-import evaluateConditionExpression from './evaluateConditionExpression';
+import evaluateCondition from './evaluateCondition';
 
 export default function parseNextScreenConditions(
   conditions: Array<[string, string]>,
@@ -7,7 +7,7 @@ export default function parseNextScreenConditions(
   let result = undefined;
   conditions.forEach(condition => {
     const [expression, nextScreenSlug] = condition;
-    const expressionResult = evaluateConditionExpression(expression, answers);
+    const expressionResult = evaluateCondition(expression, answers);
     if (expressionResult) {
       return (result = nextScreenSlug);
     }

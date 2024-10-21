@@ -1,0 +1,99 @@
+{
+  "id": "survey1",
+  "title": "Survey 1 title",
+  "startScreen": "gender",
+  "screens": [
+    {
+      "slug": "gender",
+      "screenType": "question",
+      "title": "Select your gender:",
+      "options": [
+        {
+          "value": "male",
+          "label": "Male"
+        },
+        {
+          "value": "female",
+          "label": "Female"
+        }
+      ],
+      "nextScreen": "in_relationship"
+    },
+    {
+      "slug": "in_relationship",
+      "screenType": "question",
+      "title": "So we can get to know you better, tell us about your relationship status.",
+      "options": [
+        {
+          "value": "false",
+          "label": "Single"
+        },
+        {
+          "value": "true",
+          "label": "In a relationship"
+        }
+      ],
+      "nextScreen": "has_children"
+    },
+    {
+      "slug": "has_children",
+      "screenType": "question",
+      "title": "Are you a{#if in_relationship == 'false'} single{/if} parent?",
+      "options": [
+        {
+          "value": "true",
+          "label": "Yes"
+        },
+        {
+          "value": "false",
+          "label": "No"
+        }
+      ],
+      "nextScreen": {
+        "conditions": [
+          ["gender == 'male' and (in_relationship == 'false' or has_children != 'true')", "male_info"],
+          ["gender == 'female' and has_children == 'true'", "female_info"]
+        ]
+      }
+    },
+    {
+      "slug": "male_info",
+      "screenType": "info",
+      "title": "Hello male!",
+      "description": "This page only visible for single males or males without kids",
+      "action": "Next",
+      "nextScreen": "most_important"
+    },
+    {
+      "slug": "female_info",
+      "screenType": "info",
+      "title": "Hello female!",
+      "description": "This page only visible for females with kids",
+      "action": "Next",
+      "nextScreen": "most_important"
+    },
+    {
+      "slug": "most_important",
+      "screenType": "question",
+      "title": "What is most important to you?",
+      "options": [
+        {
+          "value": "success",
+          "label": "Success"
+        },
+        {
+          "value": "romance",
+          "label": "Romance"
+        },
+        {
+          "value": "stability",
+          "label": "Stability"
+        },
+        {
+          "value": "freedom",
+          "label": "Freedom"
+        }
+      ]
+    }
+  ]
+}

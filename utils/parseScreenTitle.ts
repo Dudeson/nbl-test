@@ -1,4 +1,4 @@
-import evaluateConditionExpression from './evaluateConditionExpression';
+import evaluateCondition from './evaluateCondition';
 
 export default function parseScreenTitle(
   template: string,
@@ -13,7 +13,7 @@ export default function parseScreenTitle(
   const conditionalRegex = /\{#if ([^}]+)\}([\s\S]*?)\{\/if\}/g;
 
   template = template.replace(conditionalRegex, (_, condition, content) => {
-    const conditionResult = evaluateConditionExpression(condition, answers);
+    const conditionResult = evaluateCondition(condition, answers);
     return conditionResult ? content : '';
   });
 

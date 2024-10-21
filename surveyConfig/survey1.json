@@ -38,7 +38,7 @@
     {
       "slug": "has_children",
       "screenType": "question",
-      "title": "Are you a{#if in_relationship == false} single{/if} parent?",
+      "title": "Are you a{#if in_relationship == 'false'} single{/if} parent?",
       "options": [
         {
           "value": "true",
@@ -51,15 +51,15 @@
       ],
       "nextScreen": {
         "conditions": [
-          ["in_relationship == true", "in_relationship_problem"],
-          ["in_relationship == false", "single_problem"]
+          ["in_relationship == 'true'", "in_relationship_problem"],
+          ["in_relationship == 'false'", "single_problem"]
         ]
       }
     },
     {
       "slug": "in_relationship_problem",
       "screenType": "question",
-      "title": "{gender} {#if has_children == true}who have children {/if} need a slightly different approach to improve their relationship. Which statement best describes you?",
+      "title": "{gender} {#if has_children == 'true'}who have children {/if} need a slightly different approach to improve their relationship. Which statement best describes you?",
       "options": [
         {
           "value": "high",
@@ -79,7 +79,7 @@
     {
       "slug": "single_problem",
       "screenType": "question",
-      "title": "Single {gender} {#if has_children == true}who have children {/if} need a slightly different approach to find their perfect partner. But first, how did you feel in your last relationship?",
+      "title": "Single {gender} {#if has_children == 'true'}who have children {/if} need a slightly different approach to find their perfect partner. But first, how did you feel in your last relationship?",
       "options": [
         {
           "value": "high",
@@ -209,8 +209,8 @@
       "action": "Next",
       "nextScreen": {
         "conditions": [
-          ["overthinking == true", "most_important"],
-          ["overthinking == false", "emotional_control"]
+          ["overthinking == 'true'", "most_important"],
+          ["overthinking == 'false'", "emotional_control"]
         ]
       }
     },

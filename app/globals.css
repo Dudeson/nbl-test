@@ -1,6 +1,7 @@
 :root {
   --text-default: #201f1f;
   --text-default-inverse: #ffffff;
+  --pink: #fff0f0;
   --purple: #6a3aa2;
   --purple-gradient: linear-gradient(
     165.54deg,
