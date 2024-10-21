@@ -1,20 +1,20 @@
 # Nebula questionary
 
-This is a next.js project bootstrapped with [`create-next-app`] for a test task
+This is a next.js project bootstrapped with `create-next-app` for a test task
 
 ## Ruuning the application
 
-First install required packages with 
+Install required packages with 
 ```bash
 npm install
 ```
-You can run it dev mode with:
+Then you can run it dev mode with:
 
 ```bash
 npm install
 npm run dev
 ```
-or if you want to run a production build: 
+or if you want to make a production build: 
 
 ```bash
 npm run build
@@ -25,14 +25,12 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## Configuration
 
-y default, the application uses the configuration from `surveyConfig/survey1.json` which corresponds to the test task design.  
+By default, the application uses the configuration from `surveyConfig/survey1.json` which corresponds to the test task design.  
 I've added `surveyConfig/survey2.json` to demonstrate examples of more complex conditions. 
-You can switch config filename in the `getSurvey.ts`. I created that as an async method asuming config will be fetched from BE
-
+You can switch config filename in the `getSurvey.ts`. I created that as an async method asuming config will be fetched from BE.  
+To keep things simple, I'm using only string values for now. In the future, this can be extended to support numbers, dates, and booleans.
 
 ## Dynamic variables & conditions
-
-To keep things simple, I’ve used only string values for now. In the future, this can be extended to support numbers, dates, and booleans.
 
 You can use logical & math expressions in screen `title` and `nextScreen.conditions`.  
 In `title` you can use `{#if %expression%} %content% {/if}` to dynamically display text and also variables like `{var}` to display the values from previous answers:
